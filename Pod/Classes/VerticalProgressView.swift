@@ -13,7 +13,13 @@ import UIKit
 public class VerticalProgressView : UIView {
     
     @IBInspectable public var cornerRadius: CGFloat = 12;
-    @IBInspectable public var fillDoneColor : UIColor = UIColor.blueColor()
+	@IBInspectable public var fillDoneColor : UIColor = UIColor.blueColor() {
+		didSet(oldVal) {
+			if self.filledView != nil {
+				self.filledView?.backgroundColor = self.fillDoneColor.CGColor
+			}
+		}
+	}
     //@IBInspectable public var fillUndoneColor: UIColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.1)
     //@IBInspectable var fillRestColor : UIColor = UIColor.whiteColor()
     @IBInspectable public var animationDuration: Double = 0.5
